@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("jacoco")
 }
 
 group = "com.keith"
@@ -7,6 +8,13 @@ version = "1.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
+}
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        xml.required = true
+    }
 }
 
 dependencies {
